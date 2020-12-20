@@ -1,0 +1,27 @@
+{
+  "name": "bike_store_iwa_cct",
+  "version": "1.0.0",
+  "description": "Bike Shop made for Interactive Web Applications course at CCT College",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Panchop10/bike_store_iwa_cct.git"
+  },
+  "author": "Panchop",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Panchop10/bike_store_iwa_cct/issues"
+  },
+  "homepage": "https://github.com/Panchop10/bike_store_iwa_cct#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "nodemon": "^2.0.6",
+    "path": "^0.12.7"
+  }
+}
