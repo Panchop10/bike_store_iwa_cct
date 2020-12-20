@@ -4,9 +4,6 @@
         <table id="productsTable" border="1" class="indent">
             <thead>
                 <tr>
-                    <th colspan="3">IWA Bike Shop</th>
-                </tr>
-                <tr>
                     <th>Select</th>
                     <th>Item</th>
                     <th>Price</th>
