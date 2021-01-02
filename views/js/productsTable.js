@@ -7,7 +7,7 @@ function load_table(){
 			cache: false,
 			success: function (html)
 			{
-				$("#results").append(html);
+				$("#products").append(html);
 			}
 		});
 	};
