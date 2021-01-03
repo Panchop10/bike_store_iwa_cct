@@ -28,7 +28,7 @@
                 <div class="row">     
                   <div class="col-md-12 align-bottom">
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{id}">Edit</button>
-                    <button type="button" class="btn btn-danger" style="margin-left:10px;">Delete</button>
+                    <button type="button" class="btn btn-danger" style="margin-left:10px;" onclick="deleteProduct(`{id}`)">Delete</button>
                   </div>
                 </div>
               </div>

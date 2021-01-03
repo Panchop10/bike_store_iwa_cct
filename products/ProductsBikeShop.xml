@@ -32,13 +32,6 @@
       <price>7.95</price>
     </product>
     <product instock="true">
-      <id>f7d2a590-9ca8-4d57-8d67-fb009f244f46</id>
-      <title>Shimano Ultegra R8000 Brake Caliper</title>
-      <description>The new BR-R8000 offers a very sleek design, with narrower gaps between the arms.</description>
-      <rate>4</rate>
-      <price>60.27</price>
-    </product>
-    <product instock="true">
       <id>338c11d0-6beb-4dff-9cca-4522a26d1e03</id>
       <title>Shimano SLX M7000 Ice Tech 160mm Rotor</title>
       <description>M-RT70 Ice Tech rotors give excellent performance providing excellent rigidity and security.</description>
