@@ -4,6 +4,7 @@ const xml2js = require('xml2js'); //This module does XML to JSON conversion and 
 const xmlParse = require('xslt-processor').xmlParse; //This module allows us to work with XML files
 const xsltProcess = require('xslt-processor').xsltProcess; //The same module allows us to utilise XSL Transformations
 const { v4: uuid_v4 } = require('uuid');
+const { exit } = require('process');
 
 
 // Function to read in XML file and convert it to JSON
@@ -27,9 +28,9 @@ function jsToXmlFile(filename, obj, cb) {
 module.exports = {
   name: 'productsController',
   /**
-   * SHOW PRODUCT
+   * INDEX PRODUCT
    */
-  show: (req, res, next) => {
+  index: (req, res, next) => {
     res.writeHead(200, {'Content-Type': 'text/html'}); //We are responding to the client that the content served back is HTML and the it exists (code 200)
 
     var xml = fs.readFileSync('products/ProductsBikeShop.xml', 'utf8'); //We are reading in the XML file
@@ -41,6 +42,36 @@ module.exports = {
     var result = xsltProcess(doc, stylesheet); //This does our XSL Transformation
 
     res.end(result.toString()); //Send the result back to the user, but convert to type string first
+  },
+
+  /**
+   * SHOW PRODUCT
+   */
+  show: (req, res, next) => {
+    xmlFileToJs('../products/ProductsBikeShop.xml', function (err, result) {
+      if (err) throw (err);
+      
+      var objResp = {};
+      
+      // search product by the id sent.
+      var countCategory = 0;
+      var countElement = 0;
+      result.products.category.forEach(categoryElement => {
+        categoryElement.product.forEach(productElement => {
+          if (productElement.id[0] === req.params.id) {
+            objResp = result.products.category[countCategory].product[countElement];
+            objResp["category"] = countCategory;
+            }
+            countElement++;
+        });
+        countCategory++;
+        countElement = 0;
+      });
+
+      //sent an empty object if there is no match.
+      res.status(200).send(objResp);
+      res.end();
+    });
   },
 
   /**
@@ -56,6 +87,7 @@ module.exports = {
         'description': req.body.description,
         'rate': req.body.rate,
         'price': req.body.price,
+        'image': req.body.image,
       });
 
       // console.log(JSON.stringify(result, null, "  "));
@@ -65,6 +97,56 @@ module.exports = {
           //console.log(err);
           res.redirect('/?sucess=fail');
         }
+      });
+    });
+
+    res.redirect('/?sucess=ok');
+  },
+
+  /**
+   * UPDATE PRODUCT
+   */
+  update: (req, res, next) => {
+    xmlFileToJs('../products/ProductsBikeShop.xml', function (err, result) {
+      if (err) throw (err);
+        
+      var countCategory = 0;
+      var countElement = 0;
+      result.products.category.forEach(categoryElement => {
+          categoryElement.product.forEach(productElement => {
+            if (productElement.id[0] === req.body.id) {
+              
+              // delete the product if the category has changed, and create a new one with the values given in the new category
+              if (req.body.category != countCategory) {
+                delete result.products.category[countCategory].product[countElement]
+
+                result.products.category[req.body.category].product.push({
+                  'id': req.body.id,
+                  'title': req.body.title,
+                  'description': req.body.description,
+                  'rate': req.body.rate,
+                  'price': req.body.price,
+                  'image': req.body.image,
+                });
+              }
+              // update values of the product
+              else {
+                result.products.category[countCategory].product[countElement].title = req.body.title;
+                result.products.category[countCategory].product[countElement].rate = req.body.rate;
+                result.products.category[countCategory].product[countElement].price = req.body.price;
+                result.products.category[countCategory].product[countElement].image = req.body.image;
+                result.products.category[countCategory].product[countElement].description = req.body.description;
+              }
+            }
+            countElement++;
+          });
+          countCategory++;
+          countElement = 0;
+      });
+      //console.log(JSON.stringify(result, null, "  "));
+
+      jsToXmlFile('../products/ProductsBikeShop.xml', result, function(err){
+          if (err) console.log(err);
       });
     });
 

@@ -12,12 +12,12 @@ function load_table() {
 };
 
 // Ajax request to populate the selects with the product categories
-function populate_selects() {
+function populate_selects () {
 	$.ajax({
 		url: "/products/categories",
 		type: 'GET',
 		cache: false,
-		success: (options) => { 
+		success: (options) => {
 			var $cs = $("#createModalSelect");
 			var $es = $("#editModalSelect");
 			$.each(options, function(key,value) {
@@ -28,7 +28,7 @@ function populate_selects() {
 	});
 };
 
-function createProduct (form, e) {
+function validateForm (form, e) {
 	// prevent form submit if form is not valid
 	if (!form.checkValidity()) {
 		e.preventDefault();
@@ -36,22 +36,6 @@ function createProduct (form, e) {
 	}
 
 	form.classList.add('was-validated')
-}
-
-function editProduct (form, e) {
-	// prevent form submit
-	e.preventDefault();
-	e.stopPropagation();
-
-	// check if the form is valid
-	var formValid = form.checkValidity();
-
-	form.classList.add('was-validated')
-	
-	// edit product if the form is valid
-	if (formValid) {
-		console.log("edit valid");
-	}
 }
 
 // Ajax request to delete products

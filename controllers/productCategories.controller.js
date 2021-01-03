@@ -13,15 +13,6 @@ function xmlFileToJs(filename, cb) {
   });
 }
 
-//Function to convert JSON to XML and save it
-function jsToXmlFile(filename, obj, cb) {
-  var filepath = path.normalize(path.join(__dirname, filename));
-  var builder = new xml2js.Builder();
-  var xml = builder.buildObject(obj);
-  fs.unlinkSync(filepath);
-  fs.writeFile(filepath, xml, cb);
-}
-
 module.exports = {
   name: 'productCategoryController',
   /**
@@ -38,7 +29,6 @@ module.exports = {
         resp[categoryElement.$.name] = keyCategory;
         keyCategory++;
       });
-
       res.status(200).send(resp);
       res.end();
     });

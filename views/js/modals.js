@@ -4,13 +4,28 @@ editModal.addEventListener('show.bs.modal', function (event) {
   var button = event.relatedTarget
   // Extract info from data-bs-* attributes
   var id = button.getAttribute('data-id')
-  // If necessary, you could initiate an AJAX request here
-  // and then do the updating in a callback.
-  //
-  // Update the modal's content.
-  var modalTitle = editModal.querySelector('.modal-title')
-  // var modalBodyInput = editModal.querySelector('.modal-body input')
+  
+  //AJAX Request
+  $.ajax({
+		url: "/products/"+id,
+		type: 'GET',
+		cache: false,
+		success: (data) => {
+      populateEditModal(data);
+		},
+		error: () => {
+			$('.error').toast('show');
+		},
+	});
 
-  modalTitle.textContent = id
-  // modalBodyInput.value = recipient
+  // Update modal's content with the information of the product.
+  function populateEditModal (data) {
+    editModal.querySelector("#product-id").value = data.id[0];
+    $("#editModalSelect").val(data.category)
+    editModal.querySelector("#product-title").value = data.title[0];
+    editModal.querySelector("#product-rate").value = data.rate[0];
+    editModal.querySelector("#product-price").value = data.price[0];
+    editModal.querySelector("#product-image").value = data.image[0];
+    editModal.querySelector("#product-description").value = data.description[0];
+  }
 })

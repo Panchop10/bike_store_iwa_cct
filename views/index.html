@@ -21,10 +21,6 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">IWA Bike Shop</a>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </nav>
     <!-- End Nav Menu -->
@@ -77,11 +73,11 @@
             <h5 class="modal-title">New product</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form onsubmit="createProduct(this, event)" action="/products" method="POST" enctype="application/json" novalidate>
+          <form onsubmit="validateForm(this, event)" action="/products" method="POST" enctype="application/json" novalidate>
             <div class="modal-body">
                 <div class="mb-3">
-                  <label for="product-category" class="col-form-label">Category:</label>
-                  <select id="createModalSelect" class="form-select" aria-label="Category" id="product-category" name="category" required>
+                  <label for="createModalSelect" class="col-form-label">Category:</label>
+                  <select id="createModalSelect" class="form-select" aria-label="Category" name="category" required>
                   </select>
                 </div>
                 <div class="mb-3">
@@ -138,44 +134,45 @@
             <h5 class="modal-title" id="editModalLabel">Edit product</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <form onsubmit="editProduct(this, event)" novalidate>
+          <form onsubmit="validateForm(this, event)" action="/products/update" method="POST" enctype="application/json" novalidate>
             <div class="modal-body">
+              <input type="hidden" id="product-id" name="id">
                 <div class="mb-3">
                   <label for="product-category" class="col-form-label">Category:</label>
-                  <select id="editModalSelect" class="form-select" aria-label="Category" id="product-category" required>
+                  <select id="editModalSelect" class="form-select" aria-label="Category" name="category" required>
                   </select>
                 </div>
                 <div class="mb-3">
                   <label for="product-title" class="col-form-label">Title:</label>
-                  <input type="text" class="form-control" id="product-title" required>
+                  <input type="text" class="form-control" id="product-title" name="title" required>
                   <div class="invalid-feedback">
                     Please provide a title.
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="product-rate" class="col-form-label">Rate:</label>
-                  <input type="text" class="form-control" id="product-rate" required>
+                  <input type="text" class="form-control" id="product-rate" name="rate" required>
                   <div class="invalid-feedback">
                     Please provide a valid rate.
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="product-price" class="col-form-label">Price:</label>
-                  <input type="text" class="form-control" id="product-price" required>
+                  <input type="text" class="form-control" id="product-price" name="price" required>
                   <div class="invalid-feedback">
                     Please provide a valid price.
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="product-image" class="col-form-label">Image Link:</label>
-                  <input type="text" class="form-control" id="product-image" required>
+                  <input type="text" class="form-control" id="product-image" name="image" required>
                   <div class="invalid-feedback">
                     Please provide a valid link.
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="product-description" class="col-form-label">Description:</label>
-                  <textarea class="form-control" id="product-description" required></textarea>
+                  <textarea class="form-control" id="product-description" name="description" required></textarea>
                   <div class="invalid-feedback">
                     Please provide a description.
                   </div>
@@ -215,5 +212,14 @@
     <!-- Custom Scripts -->
     <script src="js/products.js"></script>
     <script src="js/modals.js"></script>
+
+    <footer class="bg-light text-center text-lg-start mt-4">
+      <!-- Copyright -->
+      <div class="text-center p-3 mt-4" style="background-color: rgba(0, 0, 0, 0.8); color: white;">
+        © 2021 Copyright:
+        <b><a style="color: white;" href="https://github.com/Panchop10/bike_store_iwa_cct">Francisco Olivares</a></b>
+      </div>
+      <!-- Copyright -->
+    </footer>
   </body>
 </html>
