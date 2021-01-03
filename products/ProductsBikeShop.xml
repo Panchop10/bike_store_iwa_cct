@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<products
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:noNamespaceSchemaLocation="ProductsBikeShop.xsd">
+<products>
   <category name="Wheels">
     <product>
       <id>3cb946de-80b4-4841-931b-2a378ed16339</id>
       <title>Shimano RS170 Disc Wheelset</title>
       <description>An excellent all-round wheelset for intense training rides and entry-level racing</description>
-      <price>110.50</price>
+      <price>100.50</price>
       <image>https://www.wigglestatic.com/product-media/103470766/prod193078_Black_NE_01.jpg</image>
+    </product>
+    <product>
+      <id>4f4b8b42-d8f3-4cf4-90b8-62d5a25f8b7a</id>
+      <title>Campagnolo Eurus Mega G3 Clincher Wheelset</title>
+      <description>The Eurus wheelset was designed to be both extremely durable and give high performance.</description>
+      <price>568.99</price>
+      <image>https://www.wigglestatic.com/product-media/5360062937/campy-eurus-fit-zoom.jpg</image>
     </product>
     <product>
       <id>129a5df5-495a-4ddd-8f3f-e97cb12bca89</id>
