@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <products>
-  <section name="Wheels">
+  <category name="Wheels">
     <product instock="false">
       <id>3cb946de-80b4-4841-931b-2a378ed16339</id>
       <title>Shimano RS170 Disc Wheelset</title>
@@ -15,15 +15,15 @@
       <rate>5</rate>
       <price>568.99</price>
     </product>
-    <product instock="true">
-      <id>129a5df5-495a-4ddd-8f3f-e97cb12bca89</id>
-      <title>Miche Reflex RX7 Wheelset</title>
-      <description>The Miche Reflex RX7 is the perfect entry-level wheelset for a like-for-like replacement or training wheels.</description>
-      <rate>3</rate>
-      <price>134.50</price>
+    <product>
+      <id>3a9380e5-6b2f-4834-993b-78a4d0b1ff04</id>
+      <title>test</title>
+      <description>test</description>
+      <rate>1</rate>
+      <price>1</price>
     </product>
-  </section>
-  <section name="Brakes">
+  </category>
+  <category name="Brakes">
     <product instock="true">
       <id>057a48f8-ef47-417a-bbcb-4cd1f6739c55</id>
       <title>Shimano Dura Ace 7900 Brake Pads</title>
@@ -38,5 +38,5 @@
       <rate>5</rate>
       <price>31.50</price>
     </product>
-  </section>
+  </category>
 </products>
