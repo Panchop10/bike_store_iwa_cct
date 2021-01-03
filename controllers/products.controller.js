@@ -85,7 +85,6 @@ module.exports = {
         'id': uuid_v4(),
         'title': req.body.title,
         'description': req.body.description,
-        'rate': req.body.rate,
         'price': req.body.price,
         'image': req.body.image,
       });
@@ -124,7 +123,6 @@ module.exports = {
                   'id': req.body.id,
                   'title': req.body.title,
                   'description': req.body.description,
-                  'rate': req.body.rate,
                   'price': req.body.price,
                   'image': req.body.image,
                 });
@@ -132,7 +130,6 @@ module.exports = {
               // update values of the product
               else {
                 result.products.category[countCategory].product[countElement].title = req.body.title;
-                result.products.category[countCategory].product[countElement].rate = req.body.rate;
                 result.products.category[countCategory].product[countElement].price = req.body.price;
                 result.products.category[countCategory].product[countElement].image = req.body.image;
                 result.products.category[countCategory].product[countElement].description = req.body.description;

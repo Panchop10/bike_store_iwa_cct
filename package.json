@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Panchop10/bike_store_iwa_cct#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-autosanitizer": "^1.0.2",
     "fs": "0.0.1-security",
     "http": "0.0.1-security",
     "nodemon": "^2.0.6",

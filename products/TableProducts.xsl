@@ -9,20 +9,13 @@
           <div class="row">
             <xsl:for-each select="product">
               <div class="col-lg-2 col-md-3 col-sm-4 mt-2">
-                <img src="https://via.placeholder.com/150x150" alt=""/>
+                <img src="{image}" alt="" width="150" height="150" />
                 <div class="row" style="min-height: 150px;">
-                  <div class="col-md-12 mt-1">
+                  <div class="col-md-12 mt-3">
                     <h6><xsl:value-of select="title" /></h6>
                   </div>
-                  <div class="col-12 mt-1">
-                    <i class="material-icons md-18">star</i>
-                    <i class="material-icons md-18">star</i>          
-                    <i class="material-icons md-18">star</i>
-                    <i class="material-icons md-18">star_half</i>
-                    <i class="material-icons md-18">star_border</i>
-                  </div>
                   <div class="col-md-12">
-                    <p>€<xsl:value-of select="price" /></p>
+                    <p><b>Price:</b> €<xsl:value-of select="price" /></p>
                   </div>
                 </div>
                 <div class="row">     

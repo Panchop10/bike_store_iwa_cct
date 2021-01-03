@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="products" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="products" msdata:IsDataSet="true">
+        <xs:complexType>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="category">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="product" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:string" minOccurs="1" maxOccurs="1">
+                                            <xs:minLength value="36" />
+                                        </xs:element>
+                                        <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1">
+                                            <xs:minLength value="1" />
+                                        </xs:element>
+                                        <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1">
+                                            <xs:minLength value="0" />
+                                        </xs:element>
+                                        <xs:element name="price" type="xs:integer" minOccurs="1" maxOccurs="1">
+                                            <xs:minInclusive value="0" />
+                                        </xs:element>
+                                        <xs:element name="image" type="xs:string" minOccurs="1" maxOccurs="1">
+                                            <xs:minLength value="10" />
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

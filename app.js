@@ -10,6 +10,10 @@ app.use(express.static(path.resolve(__dirname, 'views'))); //We define the views
 app.use(express.urlencoded({extended: true})); //We allow the data sent from the client to be coming in as part of the URL in GET and POST requests
 app.use(express.json()); //We include support for JSON that is coming from the client
 
+// Use middleware sanitization everywhere (safe):
+const expAutoSan = require('express-autosanitizer');
+app.use(expAutoSan.all);
+
 // Add Routes
 const routes = require('./routes/index'); // get routes from folder routes
 routes.map((x) => app.use(x.basePath, x.router)); // load routes in the server
