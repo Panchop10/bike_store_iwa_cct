@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<products>
+<products
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="ProductsBikeShop.xsd"
+ >
   <category name="Wheels">
     <product>
       <id>3cb946de-80b4-4841-931b-2a378ed16339</id>
