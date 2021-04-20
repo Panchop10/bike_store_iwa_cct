@@ -56,11 +56,11 @@ function load_table() {
                 html += product._id;
 
                 html += `">Edit</button>
-                    <button type="button" class="btn btn-danger" style="margin-left:10px;" onclick="deleteProduct({`;
+                    <button type="button" class="btn btn-danger" style="margin-left:10px;" onclick="deleteProduct('`;
                     
                 html += product._id;
 
-                html += `})">Delete</button>
+                html += `')">Delete</button>
                   </div>
                 </div>
               </div>
