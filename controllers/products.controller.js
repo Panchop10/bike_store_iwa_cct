@@ -88,29 +88,12 @@ module.exports = {
    * DELETE PRODUCT
    */
   destroy: (req, res, next) => {
-    xmlFileToJs('../products/ProductsBikeShop.xml', function (err, result) {
-        if (err) throw (err);
-        
-        var countCategory = 0;
-        var countElement = 0;
-        result.products.category.forEach(categoryElement => {
-            categoryElement.product.forEach(productElement => {
-                if (productElement.id[0] === req.params.id) {
-                    delete result.products.category[countCategory].product[countElement]
-                }
-                countElement++;
-            });
-            countCategory++;
-            countElement = 0;
-        });
-        //console.log(JSON.stringify(result, null, "  "));
-
-        jsToXmlFile('../products/ProductsBikeShop.xml', result, function(err){
-            if (err) console.log(err);
-        });
+    Product.findByIdAndRemove({_id: req.params.id}, function (err, users) {
+      if (err) {
+        res.status(400).json(err); 
+      } 
+      res.status(200).send({});
+      res.end();
     });
-
-    res.status(200).send({});
-    res.end();
   },
 };
