@@ -56,7 +56,8 @@
     <!-- End create product button -->
 
     <!-- Start Product Catalog -->
-    <div class="container" id="products"></div>
+    <div class="container" id="products">
+    </div>
     <!-- End Product Catalog -->
 
     <!-- Start modal create product -->
@@ -123,7 +124,7 @@
           </div>
           <form onsubmit="validateForm(this, event)" action="/products/update" method="POST" enctype="application/json" novalidate>
             <div class="modal-body">
-              <input type="hidden" id="product-id" name="id">
+              <input type="hidden" id="product-id" name="_id">
                 <div class="mb-3">
                   <label for="product-category" class="col-form-label">Category:</label>
                   <select id="editModalSelect" class="form-select" aria-label="Category" name="category" required>
