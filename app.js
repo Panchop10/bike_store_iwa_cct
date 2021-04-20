@@ -2,6 +2,8 @@ const http = require('http'); //This module provides the HTTP server functionali
 const path = require('path'); //The path module provides utilities for working with file and directory paths
 const express = require('express'); //This module allows this app to respond to HTTP Requests, defines the routing and renders back the required content
 require('dotenv').config(); // Required for enviorment variables
+mongoose = require('mongoose');
+
 
 const app = express(); //We set our routing to be handled by Express
 
@@ -18,6 +20,15 @@ app.use(expAutoSan.all);
 // Add Routes
 const routes = require('./routes/index'); // get routes from folder routes
 routes.map((x) => app.use(x.basePath, x.router)); // load routes in the server
+
+// const dbURI = "mongodb://localhost/test";
+const dbURI = process.env.MONGO_URL;
+
+// connect to mongo db
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+        .then((result) => console.log('connected to db'))
+        .catch((err) => console.log(err));
+
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function () {
     var addr = server.address();
