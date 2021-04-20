@@ -1,12 +1,80 @@
 // Ajax request to print table in the homepage
 function load_table() {
-	$("#products").empty();
+  $("#products").empty();
+  let html = ``;
 	$.ajax({
-		url: "/products",
+		url: "/products/categories",
 		type: 'GET',
 		cache: false,
-		success: (html) => {
-			$("#products").append(html);
+		success: (options) => {
+      for (const [key, value] of Object.entries(options)) {
+        html += `<div class="container">
+            <div class="row mt-4">
+              <h2>`;
+        html += value;
+        
+        html += `</h2>
+            </div>
+          <div class="row">
+        `;
+
+        	$.ajax({
+            async: false,
+            url: "/products",
+            type: 'GET',
+            cache: false,
+            data: { category: value },
+            success: (products) => {
+              for (const [productKey, product] of Object.entries(products)) {
+              html += `
+                <div class="col-lg-2 col-md-3 col-sm-4 mt-2">
+                <img src="`;
+                
+                html += product.image;
+
+                html += `" alt="" width="150" height="150" />
+                <div class="row" style="min-height: 150px;">
+                  <div class="col-md-12 mt-3">
+                    <h6>`;
+                    
+                html += product.title;
+
+                html += `</h6>
+                  </div>
+                  <div class="col-md-12">
+                    <p><b>Price:</b> €`;
+                
+                html += product.price;
+
+                html += `</p>
+                  </div>
+                </div>
+                <div class="row">     
+                  <div class="col-md-12 align-bottom">
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" data-id="`;
+                    
+                html += product._id;
+
+                html += `">Edit</button>
+                    <button type="button" class="btn btn-danger" style="margin-left:10px;" onclick="deleteProduct({`;
+                    
+                html += product._id;
+
+                html += `})">Delete</button>
+                  </div>
+                </div>
+              </div>
+              `;
+              }
+            }
+          });
+        
+        html += `
+          </div>
+        </div>
+        `;
+      }
+      $("#products").append(html);
 		}
 	});
 };
@@ -19,11 +87,12 @@ function populate_selects () {
 		cache: false,
 		success: (options) => {
 			var $cs = $("#createModalSelect");
-			var $es = $("#editModalSelect");
-			$.each(options, function(key,value) {
-				$cs.append($("<option></option>").attr("value", value).text(key));
-				$es.append($("<option></option>").attr("value", value).text(key));
-			});
+      var $es = $("#editModalSelect");
+
+      for (const [key, value] of Object.entries(options)) {
+        $cs.append($("<option></option>").attr("value", value).text(value));
+        $es.append($("<option></option>").attr("value", value).text(value));
+      }
 		}
 	});
 };
