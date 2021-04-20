@@ -1,6 +1,7 @@
 const http = require('http'); //This module provides the HTTP server functionalities
 const path = require('path'); //The path module provides utilities for working with file and directory paths
 const express = require('express'); //This module allows this app to respond to HTTP Requests, defines the routing and renders back the required content
+require('dotenv').config(); // Required for enviorment variables
 
 const app = express(); //We set our routing to be handled by Express
 
